@@ -218,16 +218,16 @@ int main(void) {
 
 #ifdef PRINT_FLOAT_PARTICLE_NUMBERS
 
-        uint16_t& i_massConcentrationPm1p0    ;
-        uint16_t& i_massConcentrationPm2p5    ;
-        uint16_t& i_massConcentrationPm4p0    ;
-        uint16_t& i_massConcentrationPm10p0   ;
-        uint16_t& i_numberConcentrationPm0p5  ;
-        uint16_t& i_numberConcentrationPm1p0  ;
-        uint16_t& i_numberConcentrationPm2p5  ;
-        uint16_t& i_numberConcentrationPm4p0  ;
-        uint16_t& i_numberConcentrationPm10p0 ;
-        uint16_t& i_typicalParticleSize       ;
+        uint16_t i_massConcentrationPm1p0    ;
+        uint16_t i_massConcentrationPm2p5    ;
+        uint16_t i_massConcentrationPm4p0    ;
+        uint16_t i_massConcentrationPm10p0   ;
+        uint16_t i_numberConcentrationPm0p5  ;
+        uint16_t i_numberConcentrationPm1p0  ;
+        uint16_t i_numberConcentrationPm2p5  ;
+        uint16_t i_numberConcentrationPm4p0  ;
+        uint16_t i_numberConcentrationPm10p0 ;
+        uint16_t i_typicalParticleSize       ;
         error = sen5x_read_measured_pm_values_as_integers(
             &i_massConcentrationPm1p0    ,
             &i_massConcentrationPm2p5    ,
