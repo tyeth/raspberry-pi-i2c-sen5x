@@ -135,6 +135,12 @@ int main(void) {
         float mass_concentration_pm2p5;
         float mass_concentration_pm4p0;
         float mass_concentration_pm10p0;
+        float numberConcentrationPm0p5;
+        float numberConcentrationPm1p0;
+        float numberConcentrationPm2p5;
+        float numberConcentrationPm4p0;
+        float numberConcentrationPm10p0;
+        float typicalParticleSize;
         float ambient_humidity;
         float ambient_temperature;
         float voc_index;
@@ -176,6 +182,35 @@ int main(void) {
                 printf("Nox index: %.1f\n", nox_index);
             }
         }
+
+        error = sen5x_read_measured_pm_values(
+            &massConcentrationPm1p0, &massConcentrationPm2p5,
+            &massConcentrationPm4p0, &massConcentrationPm10p0,
+            &numberConcentrationPm0p5, &numberConcentrationPm1p0,
+            &numberConcentrationPm2p5, &numberConcentrationPm4p0,
+            &numberConcentrationPm10p0, &typicalParticleSize);
+
+        if (error) {
+            printf("Error executing sen5x_read_measured_pm_values(): %i\n", error);
+        } else {
+            if(not isnan(numberConcentrationPm0p5)): printf("number pm0p5: %.1f particles per cm³\n", numberConcentrationPm0p5);
+            if(not isnan(numberConcentrationPm1p0)): printf("number pm1p0: %.1f particles per cm³\n", numberConcentrationPm1p0);
+            if(not isnan(numberConcentrationPm2p5)): printf("number pm2p5: %.1f particles per cm³\n", numberConcentrationPm2p5);
+            if(not isnan(numberConcentrationPm4p0)): printf("number pm4p0: %.1f particles per cm³\n", numberConcentrationPm4p0);
+            if(not isnan(numberConcentrationPm10p0)): printf("number pm10p0: %.1f particles per cm³\n",numberConcentrationPm10p0);
+            if(not isnan(typicalParticleSize)): printf("Typical Particle Size: %.1f µm \n", typicalParticleSize);
+
+            printf("Mass concentration pm1p0: %.1f µg/m³\n",
+                   mass_concentration_pm1p0);
+            printf("Mass concentration pm2p5: %.1f µg/m³\n",
+                   mass_concentration_pm2p5);
+            printf("Mass concentration pm4p0: %.1f µg/m³\n",
+                   mass_concentration_pm4p0);
+            printf("Mass concentration pm10p0: %.1f µg/m³\n",
+                   mass_concentration_pm10p0);
+        }
+
+
     }
 
     error = sen5x_stop_measurement();
