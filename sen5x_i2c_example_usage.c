@@ -184,8 +184,8 @@ int main(void) {
         }
 
         error = sen5x_read_measured_pm_values(
-            &massConcentrationPm1p0, &massConcentrationPm2p5,
-            &massConcentrationPm4p0, &massConcentrationPm10p0,
+            &mass_concentration_pm1p0, &mass_concentration_pm2p5,
+            &mass_concentration_pm4p0, &mass_concentration_pm10p0,
             &numberConcentrationPm0p5, &numberConcentrationPm1p0,
             &numberConcentrationPm2p5, &numberConcentrationPm4p0,
             &numberConcentrationPm10p0, &typicalParticleSize);
