@@ -193,12 +193,12 @@ int main(void) {
         if (error) {
             printf("Error executing sen5x_read_measured_pm_values(): %i\n", error);
         } else {
-            if(not isnan(numberConcentrationPm0p5)): printf("number pm0p5: %.1f particles per cm³\n", numberConcentrationPm0p5);
-            if(not isnan(numberConcentrationPm1p0)): printf("number pm1p0: %.1f particles per cm³\n", numberConcentrationPm1p0);
-            if(not isnan(numberConcentrationPm2p5)): printf("number pm2p5: %.1f particles per cm³\n", numberConcentrationPm2p5);
-            if(not isnan(numberConcentrationPm4p0)): printf("number pm4p0: %.1f particles per cm³\n", numberConcentrationPm4p0);
-            if(not isnan(numberConcentrationPm10p0)): printf("number pm10p0: %.1f particles per cm³\n",numberConcentrationPm10p0);
-            if(not isnan(typicalParticleSize)): printf("Typical Particle Size: %.1f µm \n", typicalParticleSize);
+            if(!isnan(numberConcentrationPm0p5)) printf("number pm0p5: %.1f particles per cm³\n", numberConcentrationPm0p5);
+            if(!isnan(numberConcentrationPm1p0)) printf("number pm1p0: %.1f particles per cm³\n", numberConcentrationPm1p0);
+            if(!isnan(numberConcentrationPm2p5)) printf("number pm2p5: %.1f particles per cm³\n", numberConcentrationPm2p5);
+            if(!isnan(numberConcentrationPm4p0)) printf("number pm4p0: %.1f particles per cm³\n", numberConcentrationPm4p0);
+            if(!isnan(numberConcentrationPm10p0)) printf("number pm10p0: %.1f particles per cm³\n",numberConcentrationPm10p0);
+            if(!isnan(typicalParticleSize)) printf("Typical Particle Size: %.1f µm \n", typicalParticleSize);
 
             printf("Mass concentration pm1p0: %.1f µg/m³\n",
                    mass_concentration_pm1p0);
