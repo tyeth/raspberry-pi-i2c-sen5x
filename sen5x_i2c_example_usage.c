@@ -1,3 +1,6 @@
+#define PRINT_FLOAT_PARTICLE_NUMBERS
+#define PRINT_INT_PARTICLE_NUMBERS
+
 /*
  * I2C-Generator: 0.3.0
  * Yaml Version: 2.1.3
@@ -183,6 +186,7 @@ int main(void) {
             }
         }
 
+#ifdef PRINT_FLOAT_PARTICLE_NUMBERS
         error = sen5x_read_measured_pm_values(
             &mass_concentration_pm1p0, &mass_concentration_pm2p5,
             &mass_concentration_pm4p0, &mass_concentration_pm10p0,
@@ -209,9 +213,53 @@ int main(void) {
             printf("Mass concentration pm10p0: %.1f µg/m³\n",
                    mass_concentration_pm10p0);
         }
+#endif
 
 
-    }
+#ifdef PRINT_FLOAT_PARTICLE_NUMBERS
+
+        uint16_t& i_massConcentrationPm1p0    ;
+        uint16_t& i_massConcentrationPm2p5    ;
+        uint16_t& i_massConcentrationPm4p0    ;
+        uint16_t& i_massConcentrationPm10p0   ;
+        uint16_t& i_numberConcentrationPm0p5  ;
+        uint16_t& i_numberConcentrationPm1p0  ;
+        uint16_t& i_numberConcentrationPm2p5  ;
+        uint16_t& i_numberConcentrationPm4p0  ;
+        uint16_t& i_numberConcentrationPm10p0 ;
+        uint16_t& i_typicalParticleSize       ;
+        error = sen5x_read_measured_pm_values_as_integers(
+            &i_massConcentrationPm1p0    ,
+            &i_massConcentrationPm2p5    ,
+            &i_massConcentrationPm4p0    ,
+            &i_massConcentrationPm10p0    ,
+            &i_numberConcentrationPm0p5  ,
+            &i_numberConcentrationPm1p0  ,
+            &i_numberConcentrationPm2p5  ,
+            &i_numberConcentrationPm4p0  ,
+            &i_numberConcentrationPm10p0  ,
+            &i_typicalParticleSize
+        );
+
+        if (error) {
+            printf("Error executing sen5x_read_measured_pm_values(): %i\n", error);
+        } else {
+            if(!isnan(i_numberConcentrationPm0p5)) printf("number pm0p5: %d /10 particles per cm³\n", i_numberConcentrationPm0p5);
+            if(!isnan(i_numberConcentrationPm1p0)) printf("number pm1p0: %d /10 particles per cm³\n", i_numberConcentrationPm1p0);
+            if(!isnan(i_numberConcentrationPm2p5)) printf("number pm2p5: %d /10 particles per cm³\n", i_numberConcentrationPm2p5);
+            if(!isnan(i_numberConcentrationPm4p0)) printf("number pm4p0: %d /10 particles per cm³\n", i_numberConcentrationPm4p0);
+            if(!isnan(i_numberConcentrationPm10p0)) printf("number pm10p0: %d /10 particles per cm³\n",i_numberConcentrationPm10p0);
+            if(!isnan(i_typicalParticleSize)) printf("Typical Particle Size: %d /1000 µm \n", i_typicalParticleSize);
+
+            printf("Mass concentration pm1p0: %d /10 µg/m³\n",                    i_mass_concentration_pm1p0);
+            printf("Mass concentration pm2p5: %d /10 µg/m³\n",                   i_mass_concentration_pm2p5);
+            printf("Mass concentration pm4p0: %d /10 µg/m³\n",                   i_mass_concentration_pm4p0);
+            printf("Mass concentration pm10p0: %d /10 µg/m³\n",                   i_mass_concentration_pm10p0);
+        }
+#endif
+
+    } // end of FOR
+
 
     error = sen5x_stop_measurement();
     if (error) {
