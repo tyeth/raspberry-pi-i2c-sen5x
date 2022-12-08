@@ -250,10 +250,10 @@ int main(void) {
             printf("number pm4p0: %d /10 particles per cm³\n", i_numberConcentrationPm4p0);
             printf("number pm10p0: %d /10 particles per cm³\n",i_numberConcentrationPm10p0);
             printf("Typical Particle Size: %d /1000 µm \n", i_typicalParticleSize);
-            printf("Mass concentration pm1p0: %d /10 µg/m³\n",                    i_mass_concentration_pm1p0);
-            printf("Mass concentration pm2p5: %d /10 µg/m³\n",                   i_mass_concentration_pm2p5);
-            printf("Mass concentration pm4p0: %d /10 µg/m³\n",                   i_mass_concentration_pm4p0);
-            printf("Mass concentration pm10p0: %d /10 µg/m³\n",                   i_mass_concentration_pm10p0);
+            printf("Mass concentration pm1p0: %d /10 µg/m³\n", i_massConcentrationPm1p0);
+            printf("Mass concentration pm2p5: %d /10 µg/m³\n", i_massConcentrationPm2p5);
+            printf("Mass concentration pm4p0: %d /10 µg/m³\n", i_massConcentrationPm4p0);
+            printf("Mass concentration pm10p0: %d /10 µg/m³\n", i_massConcentrationPm10p0);
         }
 #endif
 
